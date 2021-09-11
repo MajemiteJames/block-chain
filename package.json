@@ -9,7 +9,7 @@
     "dev": " nodemon index.js",
     "dev-peer": "cross-env GENERATE_PEER_PORT='true' nodemon index.js"
   },
-   "jest": {
+  "jest": {
     "testEnvironment": "node"
   },
   "author": "Majemite James",
@@ -24,6 +24,7 @@
     "express": "^4.17.1",
     "hex-to-binary": "^1.0.1",
     "pubnub": "^4.33.0",
-    "request": "^2.88.2"
+    "request": "^2.88.2",
+    "uuid": "^3.3.2"
   }
 }
