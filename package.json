@@ -4,11 +4,22 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --watchAll"
+    "test": "jest --watchAll",
+    "start": "node index.js",
+    "dev": " nodemon index.js",
+    "dev-peer": "cross-env GENERATE_PEER_PORT='true' nodemon index.js"
   },
   "author": "Majemite James",
   "license": "MIT",
   "devDependencies": {
-    "jest": "^23.6.0"
+    "cross-env": "^7.0.3",
+    "jest": "^23.6.0",
+    "nodemon": "^2.0.12"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "hex-to-binary": "^1.0.1",
+    "pubnub": "^4.33.0",
+    "request": "^2.88.2"
   }
 }
