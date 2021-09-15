@@ -52,10 +52,13 @@ class PubSub {
 
         console.log(`Message received. Channel: ${channel}. Message: ${message}`);
         const parsedMessage = JSON.parse(message);
-
         switch(channel) {
           case CHANNELS.BLOCKCHAIN:
-            this.blockchain.replaceChain(parsedMessage);
+            this.blockchain.replaceChain(parsedMessage, true, () => {
+              this.transactionPool.clearBlockchainTransactions(
+                { chain: parsedMessage.chain }
+              );
+            });
             break;
           case CHANNELS.TRANSACTION:
             if (!this.transactionPool.existingTransaction({
@@ -67,24 +70,6 @@ class PubSub {
           default:
             return;
         }
-        // switch(channel) {
-        //   case CHANNELS.BLOCKCHAIN:
-        //     this.blockchain.replaceChain(parsedMessage, true, () => {
-        //       this.transactionPool.clearBlockchainTransactions(
-        //         { chain: parsedMessage.chain }
-        //       );
-        //     });
-        //     break;
-        //   case CHANNELS.TRANSACTION:
-        //     if (!this.transactionPool.existingTransaction({
-        //       inputAddress: this.wallet.publicKey
-        //     })) {
-        //       this.transactionPool.setTransaction(parsedMessage);
-        //     }
-        //     break;
-        //   default:
-        //     return;
-        // }
       }
     }
   }
