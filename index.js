@@ -44,7 +44,7 @@ app.post('/api/transact', (req, res) => {
         transaction = wallet.createTransaction({
           recipient,
           amount,
-        //   chain: blockchain.chain
+          chain: blockchain.chain
         });
       }
     } catch(error) {
@@ -69,14 +69,14 @@ app.post('/api/transact', (req, res) => {
     res.redirect('/api/blocks');
   });
   
-  // app.get('/api/wallet-info', (req, res) => {
-  //   const address = wallet.publicKey;
+  app.get('/api/wallet-info', (req, res) => {
+    const address = wallet.publicKey;
   
-  //   res.json({
-  //     address,
-  //     balance: Wallet.calculateBalance({ chain: blockchain.chain, address })
-  //   });
-  // });
+    res.json({
+      address,
+      balance: Wallet.calculateBalance({ chain: blockchain.chain, address })
+    });
+  });
   
 
 const syncWithRootState  = () => {
