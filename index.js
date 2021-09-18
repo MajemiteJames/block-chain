@@ -18,6 +18,8 @@ const transactionMiner = new TransactionMiner({ blockchain, transactionPool, wal
 const DEFAULT_PORT = 3100;
 const ROOT_NODE_ADDRESS = `http://localhost:${DEFAULT_PORT}`;
 
+app.use(express.static(path.join(__dirname, 'client')));
+
 app.get('/api/blocks', (req, res) => {
     res.json(blockchain.chain);
 });
