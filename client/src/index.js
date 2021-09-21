@@ -1,7 +1,8 @@
 import React from 'react';
 import { render } from 'react-dom';
+import App from './components/App'
 
 render(
-  <div>CryptoChain Frontend Live updates third fourth fifth</div>,
+  <App />,
    document.getElementById('root')
 );
