@@ -84,7 +84,7 @@ app.post('/api/transact', (req, res) => {
   });
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client/dist/index.html'));
+  res.sendFile(path.join(__dirname, 'client/build/index.html'));
 });
   
 
@@ -107,6 +107,8 @@ const syncWithRootState  = () => {
         }
       });
 }
+
+if (process.env.NODE_ENV === "development") {
 
   const walletFoo = new Wallet();
   const walletBar = new Wallet();
@@ -146,7 +148,19 @@ const syncWithRootState  = () => {
     transactionMiner.mineTransactions();
   }
 
+}
 
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "client/build")));
+
+  app.get("*", (req, res) =>
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"))
+  );
+} else {
+  app.get("/", (req, res) => {
+    res.send("API is running....");
+  });
+}
 
 let PEER_PORT;
 
