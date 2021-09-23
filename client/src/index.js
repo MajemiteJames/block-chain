@@ -6,6 +6,7 @@ import './index.css';
 import App from './App';
 import Blocks from '../src/components/Blocks';
 import ConductTransaction from '../src/components/ConductTransaction';
+import TransactionPool from '../src/components/TransactionPool';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -14,6 +15,7 @@ ReactDOM.render(
         <Route exact path='/' component={App} />
         <Route path='/blocks' component={Blocks} />
         <Route path='/conduct-transaction' component={ConductTransaction} />
+        <Route path='/transaction-pool' component={TransactionPool} />
       </Switch>
     </Router>
   </React.StrictMode>,
